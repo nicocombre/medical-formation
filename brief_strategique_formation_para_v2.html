@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief Stratégique — Formation Continue Paramédicale</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1A1915;
+    --ink-secondary: #6B6860;
+    --ink-tertiary: #AAA89F;
+    --red: #C93C2A;
+    --red-light: #F5EAE7;
+    --green: #2A6B3C;
+    --green-light: #E8F2EB;
+    --blue: #1E4A8C;
+    --blue-light: #E8EEF8;
+    --amber: #9B5C0A;
+    --amber-light: #FAF0E0;
+    --purple: #4A2C8C;
+    --purple-light: #EEEAF8;
+    --border: rgba(26,25,21,0.12);
+    --border-strong: rgba(26,25,21,0.22);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header-left {}
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--ink-secondary);
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--ink-tertiary);
+    line-height: 1.8;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-red { background: var(--red); }
+  .dot-green { background: var(--green); }
+  .dot-blue { background: var(--blue); }
+  .dot-amber { background: var(--amber); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .card-title.red { color: var(--red); }
+  .card-title.green { color: var(--green); }
+  .card-title.blue { color: var(--blue); }
+  .card-title.amber { color: var(--amber); }
+
+  .card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: var(--ink-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 0.75rem;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-icon svg { width: 10px; height: 10px; }
+
+  .star-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .star-item:last-child { border-bottom: none; }
+
+  .star-item strong { color: var(--ink); }
+
+  .featured-card {
+    background: var(--ink);
+    border: none;
+    color: white;
+  }
+
+  .featured-card h3 { color: white; }
+  .featured-card .card-title { color: #9FB8D8; }
+  .featured-card p { color: rgba(255,255,255,0.65); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .price-box {
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .price-box .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+
+  .price-box .amount {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    color: white;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-box .amount span {
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    opacity: 0.6;
+  }
+
+  .price-box .sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  .fif-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 1rem 0;
+  }
+
+  .metric-box {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 0.875rem;
+  }
+
+  .metric-box .label {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    margin-bottom: 4px;
+  }
+
+  .metric-box .value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-box .sub {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    line-height: 1.4;
+  }
+
+  .warning-box {
+    background: var(--amber-light);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 0.75rem 0;
+  }
+
+  .warning-box p {
+    font-size: 13px;
+    color: var(--amber);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 0.75rem;
+  }
+
+  .auto-box {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 0.875rem;
+  }
+
+  .auto-box .icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: var(--ink-tertiary);
+  }
+
+  .auto-box .title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .auto-box .desc {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    line-height: 1.4;
+  }
+
+  .axes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .axe-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 6px;
+  }
+
+  .axe-row.featured {
+    background: var(--green-light);
+  }
+
+  .axe-row .axe-num {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-tertiary);
+    min-width: 36px;
+    padding-top: 1px;
+  }
+
+  .axe-row.featured .axe-num { color: var(--green); }
+
+  .axe-row .axe-content strong {
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .axe-row .axe-content span {
+    color: var(--ink-secondary);
+  }
+
+  .axe-row.featured .axe-content strong { color: var(--green); }
+
+  .update-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+
+  .update-box {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 0.875rem;
+  }
+
+  .update-box .label {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    margin-bottom: 4px;
+  }
+
+  .update-box .value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .update-box .desc {
+    font-size: 12px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+
+  /* Market section */
+  .market-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+
+  .market-header {
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .market-header .prof {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .market-header .count {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+  }
+
+  .market-header .note {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+  }
+
+  .market-header.kine { background: var(--green-light); }
+  .market-header.kine .prof { color: var(--green); }
+  .market-header.kine .count { color: var(--green); }
+
+  .market-header.osteo { background: var(--purple-light); }
+  .market-header.osteo .prof { color: var(--purple); }
+  .market-header.osteo .count { color: var(--purple); }
+
+  .market-header.podo { background: var(--amber-light); }
+  .market-header.podo .prof { color: var(--amber); }
+  .market-header.podo .count { color: var(--amber); }
+
+  .market-header.chiro { background: #F5F2EC; }
+  .market-header.chiro .prof { color: var(--ink-secondary); }
+  .market-header.chiro .count { color: var(--ink-secondary); }
+
+  .market-scenarios {
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .scenario {
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: var(--cream);
+  }
+
+  .scenario.highlight {
+    background: var(--blue-light);
+    outline: 1.5px solid rgba(30,74,140,0.2);
+  }
+
+  .scenario .pct {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    margin-bottom: 3px;
+  }
+
+  .scenario.highlight .pct { color: var(--blue); }
+
+  .scenario .clients {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .scenario .arr {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+  }
+
+  .market-note {
+    padding: 0.625rem 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--ink-tertiary);
+    background: var(--cream);
+  }
+
+  .total-banner {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .total-metric .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+  }
+
+  .total-metric .value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    color: white;
+    line-height: 1;
+  }
+
+  .assumptions {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .assumption-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 12px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .assumption-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .assumption-item::before {
+    content: '—';
+    color: var(--ink-tertiary);
+    flex-shrink: 0;
+  }
+
+  /* Sequence */
+  .sequence {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .seq-step {
+    background: white;
+    padding: 1.25rem;
+  }
+
+  .seq-step .year {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 6px;
+  }
+
+  .seq-step .title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+
+  .seq-step .desc {
+    font-size: 12px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <div class="eyebrow">Brief stratégique — v2</div>
+      <h1>Recap <em>opportunité</em></h1>
+    </div>
+    <div class="header-meta">
+      Formation continue paramédicale<br>
+      France
+    </div>
+  </div>
+
+  <!-- SECTION 1 — CE QUI CHANGE -->
+  <div class="section">
+    <div class="section-label">Ce qui est en train de disparaître</div>
+    <div class="card">
+      <div class="card-header">
+        <div class="dot dot-red"></div>
+        <div class="card-title red">L'ANDPC ferme fin 2026</div>
+      </div>
+      <h3>Le financement public de la formation change de main</h3>
+      <p>L'agence qui finançait les formations DPC (jusqu'à 728€/formation pour les kinés) disparaît. Un nouveau système piloté par la HAS et France Compétences prendra le relais en 2027 — mais les montants et modalités sont encore inconnus.</p>
+      <p>Tendance de fond : la France s'aligne sur le reste de l'Europe, où la formation continue est un investissement individuel, pas une dépense d'État. Le budget va avoir tendance à se réduire à chaque cycle.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 — CE QUI NE BOUGE PAS -->
+  <div class="section">
+    <div class="section-label">Ce qui ne bougera pas</div>
+    <div class="card">
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-icon">
+            <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#2A6B3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><strong style="color:#1A1915">L'obligation légale de se former</strong> — 8 actions sur 6 ans (4 axes × 2 actions), contrôlée par l'Ordre. Sanctions possibles jusqu'à la suspension d'exercice. Obligations pleinement opérationnelles depuis février 2026 seulement.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#2A6B3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><strong style="color:#1A1915">Le refus de se déplacer</strong> — le e-learning est le format dominant chez les paras en 2026. Personne ne veut perdre une journée de cabinet pour aller en formation.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#2A6B3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><strong style="color:#1A1915">Le FIF-PL</strong> — financé par les cotisations URSSAF des libéraux eux-mêmes (pas le budget État). Structurellement plus stable que l'ANDPC. Plafond e-learning : 450€ cœur de métier + 200€ transversal = <strong style="color:#1A1915">650€/an max</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 — LE MODELE -->
+  <div class="section">
+    <div class="section-label">Le modèle</div>
+    <div class="card featured-card">
+      <div class="card-header">
+        <div class="card-title" style="color:#9FB8D8">Proposition de valeur</div>
+      </div>
+      <h3>Accès complet à toutes les formations certifiantes de ta profession</h3>
+      <p>Au lieu de courir après plusieurs plateformes et 8 attestations — un seul accès qui couvre les 4 axes obligatoires et gère toute l'admin à ta place. Tu ne t'occupes plus jamais de ta certification périodique.</p>
+      <div class="pricing-grid">
+        <div class="price-box">
+          <div class="label">Accès total annuel</div>
+          <div class="amount">~650 €<span>/an</span></div>
+          <div class="sub">Toutes formations incluses, illimité</div>
+        </div>
+        <div class="price-box" style="background:rgba(255,255,255,0.12)">
+          <div class="label">À l'action certifiante</div>
+          <div class="amount">80–120 €<span>/action</span></div>
+          <div class="sub">Sans engagement — LTV 640–960€ sur 6 ans</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 — FIF-PL -->
+  <div class="section">
+    <div class="section-label">Le FIF-PL — remboursement possible mais limité</div>
+    <div class="card">
+      <div class="fif-grid">
+        <div class="metric-box">
+          <div class="label">Plafond e-learning</div>
+          <div class="value">650 €<span style="font-size:13px;font-family:'DM Sans',sans-serif;color:var(--ink-secondary)">/an</span></div>
+          <div class="sub">450€ cœur métier<br>+ 200€ transversal</div>
+        </div>
+        <div class="metric-box">
+          <div class="label">Cagnotte annuelle estimée</div>
+          <div class="value">~15 M€</div>
+          <div class="sub">Toutes professions<br>paras libérales</div>
+        </div>
+        <div class="metric-box">
+          <div class="label">Pros remboursables max</div>
+          <div class="value">~17 000</div>
+          <div class="sub">Sur 145 000 libéraux<br>(~12% seulement)</div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M8 6v3M8 10.5v.5M2.5 13.5h11l-5.5-11-5.5 11z" stroke="#9B5C0A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Le pot se vide dès juillet-août. Les pros qui attendent la fin d'année paient de leur poche — même s'ils ont théoriquement droit au remboursement. C'est le pain point central que la plateforme peut résoudre.</p>
+      </div>
+
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:8px">Ce que la plateforme automatise</p>
+      <div class="auto-grid">
+        <div class="auto-box">
+          <div class="icon">⬜</div>
+          <div class="title">Dossier pré-rempli</div>
+          <div class="desc">Généré dès l'inscription, dans les 10 jours requis par le FIF-PL</div>
+        </div>
+        <div class="auto-box">
+          <div class="icon">⬜</div>
+          <div class="title">Alerte janvier</div>
+          <div class="desc">Rappel automatique pour s'inscrire quand le pot est encore plein</div>
+        </div>
+        <div class="auto-box">
+          <div class="icon">⬜</div>
+          <div class="title">Attestation auto</div>
+          <div class="desc">Envoyée dès le module terminé, remontée dans Ma Certif'Pro Santé</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 — CONTENU -->
+  <div class="section">
+    <div class="section-label">Le contenu — radio-anatomie comme module fondateur</div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--ink-secondary);margin-bottom:0.75rem">Aucun acteur existant ne propose une formation dédiée à la lecture d'imagerie médicale spécifiquement conçue pour kinés, ostéos, chiros et podologues. C'est le module différenciateur. Pour couvrir les 4 axes obligatoires, la plateforme complète avec les autres axes.</p>
+      <div class="axes-list">
+        <div class="axe-row featured">
+          <div class="axe-num">Axe 1</div>
+          <div class="axe-content">
+            <strong>Actualisation des connaissances ← module fondateur</strong>
+            <span>Radio-anatomie, imagerie pathologique — différenciateur unique sur le marché</span>
+          </div>
+        </div>
+        <div class="axe-row">
+          <div class="axe-num">Axe 2</div>
+          <div class="axe-content">
+            <strong>Qualité des pratiques</strong>
+            <span>Cas cliniques, évaluation des pratiques professionnelles (EPP)</span>
+          </div>
+        </div>
+        <div class="axe-row">
+          <div class="axe-num">Axe 3</div>
+          <div class="axe-content">
+            <strong>Gestion des risques</strong>
+            <span>Risques iatrogènes, sécurité patient, prévention</span>
+          </div>
+        </div>
+        <div class="axe-row">
+          <div class="axe-num">Axe 4</div>
+          <div class="axe-content">
+            <strong>Santé personnelle du soignant</strong>
+            <span>Relation patient, communication, prévention burn-out</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:0.75rem">
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:0.75rem">Effort de mise à jour annuel</p>
+      <div class="update-grid">
+        <div class="update-box">
+          <div class="label">Contenu stable</div>
+          <div class="value">~85%</div>
+          <div class="desc">Anatomie de base, grandes pathologies, protocoles de lecture — ne change pas d'une année sur l'autre</div>
+        </div>
+        <div class="update-box">
+          <div class="label">Mise à jour annuelle</div>
+          <div class="value">~15–25 j/an</div>
+          <div class="desc">Nouvelles recommandations, cas cliniques, alignement sur les thèmes FIF-PL de l'année</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 — MARCHÉ -->
+  <div class="section">
+    <div class="section-label">Taille de marché — pros en activité France</div>
+
+    <div class="market-card">
+      <div class="market-header kine">
+        <div>
+          <div class="prof">Kinésithérapeutes</div>
+          <div class="note">libéraux + salariés</div>
+        </div>
+        <div class="count">104 000</div>
+      </div>
+      <div class="market-scenarios">
+        <div class="scenario">
+          <div class="pct">Pénétration 5%</div>
+          <div class="clients">5 200 clients</div>
+          <div class="arr">ARR ~3,4M€</div>
+        </div>
+        <div class="scenario highlight">
+          <div class="pct">Pénétration 10%</div>
+          <div class="clients">10 400 clients</div>
+          <div class="arr">ARR ~6,8M€</div>
+        </div>
+        <div class="scenario">
+          <div class="pct">Pénétration 20%</div>
+          <div class="clients">20 800 clients</div>
+          <div class="arr">ARR ~13,5M€</div>
+        </div>
+      </div>
+      <div class="market-note">Marché le plus large — mais culture du "gratuit via DPC" à déconstruire</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header osteo">
+        <div>
+          <div class="prof">Ostéopathes</div>
+          <div class="note">pros en activité</div>
+        </div>
+        <div class="count">26 000</div>
+      </div>
+      <div class="market-scenarios">
+        <div class="scenario">
+          <div class="pct">5%</div>
+          <div class="clients">1 300 clients</div>
+          <div class="arr">ARR ~845K€</div>
+        </div>
+        <div class="scenario highlight">
+          <div class="pct">10%</div>
+          <div class="clients">2 600 clients</div>
+          <div class="arr">ARR ~1,7M€</div>
+        </div>
+        <div class="scenario">
+          <div class="pct">20%</div>
+          <div class="clients">5 200 clients</div>
+          <div class="arr">ARR ~3,4M€</div>
+        </div>
+      </div>
+      <div class="market-note">Segment prioritaire — 100% privé, habitués à payer de leur poche, obligation 60h/3 ans déjà ancrée</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header podo">
+        <div>
+          <div class="prof">Podologues</div>
+          <div class="note">pros en activité</div>
+        </div>
+        <div class="count">14 400</div>
+      </div>
+      <div class="market-scenarios">
+        <div class="scenario">
+          <div class="pct">5%</div>
+          <div class="clients">720 clients</div>
+          <div class="arr">ARR ~468K€</div>
+        </div>
+        <div class="scenario highlight">
+          <div class="pct">10%</div>
+          <div class="clients">1 440 clients</div>
+          <div class="arr">ARR ~936K€</div>
+        </div>
+        <div class="scenario">
+          <div class="pct">20%</div>
+          <div class="clients">2 880 clients</div>
+          <div class="arr">ARR ~1,9M€</div>
+        </div>
+      </div>
+      <div class="market-note">Certification périodique obligatoire depuis janvier 2023</div>
+    </div>
+
+    <div class="market-card">
+      <div class="market-header chiro">
+        <div>
+          <div class="prof">Chiropracteurs</div>
+          <div class="note">pros en activité</div>
+        </div>
+        <div class="count">1 300</div>
+      </div>
+      <div class="market-scenarios" style="grid-template-columns:1fr">
+        <div class="scenario">
+          <div class="pct" style="color:var(--ink-tertiary)">Marché marginal</div>
+          <div class="clients" style="color:var(--ink-secondary)">Intéressant uniquement en package multi-profession — ne pas cibler seul</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-banner">
+      <div class="total-metric">
+        <div class="label">Clients totaux (10%)</div>
+        <div class="value">~14 500</div>
+      </div>
+      <div class="total-metric">
+        <div class="label">ARR accès fixe</div>
+        <div class="value">~9,4M€</div>
+      </div>
+      <div class="total-metric">
+        <div class="label">LTV à l'action</div>
+        <div class="value">800 €</div>
+      </div>
+      <div class="total-metric">
+        <div class="label">TAM France</div>
+        <div class="value">~94M€</div>
+      </div>
+    </div>
+
+    <div class="assumptions">
+      <div class="assumption-item">LTV calculée sur 8 actions × 100€ = 800€ sur 6 ans (paiement à l'action)</div>
+      <div class="assumption-item">ARR calculé sur accès annuel fixe à 650€ (hors FIF-PL)</div>
+      <div class="assumption-item">Marché émergent — obligations opérationnelles depuis fév. 2026 seulement</div>
+      <div class="assumption-item">France uniquement — Belgique, Suisse, Québec ×2-3 sur le TAM</div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 — SEQUENCE -->
+  <div class="section">
+    <div class="section-label">Séquence recommandée</div>
+    <div class="sequence">
+      <div class="seq-step">
+        <div class="year">An 1</div>
+        <div class="title">Vendre aux écoles</div>
+        <div class="desc">Valider le produit, construire la crédibilité, obtenir Qualiopi. Les écoles sont le canal d'acquisition déguisé en source de revenus.</div>
+      </div>
+      <div class="seq-step" style="background:#FAFAF8">
+        <div class="year">An 2</div>
+        <div class="title">Référencement FIF-PL</div>
+        <div class="desc">Ouvrir le B2C pros à 650€/an. Automatiser la démarche FIF-PL dès janvier. S'intégrer à Ma Certif'Pro Santé.</div>
+      </div>
+      <div class="seq-step">
+        <div class="year">An 3</div>
+        <div class="title">Scale</div>
+        <div class="desc">Les diplômés des écoles clientes deviennent naturellement abonnés. Étendre à la Belgique, la Suisse et le Québec.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
